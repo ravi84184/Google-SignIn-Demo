@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -110,7 +111,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             findViewById(R.id.btn_sign_out).setVisibility(View.VISIBLE);
             findViewById(R.id.llProfile).setVisibility(View.VISIBLE);
 
-            Picasso.with(this).load(account.getPhotoUrl()).into(imageView);
+//            Picasso.with(this).load(account.getPhotoUrl()).into(imageView);
+            Glide.with(this)
+                    .load(account.getPhotoUrl())
+                    .into(imageView);
             Log.e(TAG, "updateUI: "+account.getPhotoUrl() );
             name.setText(account.getDisplayName());
             email.setText(account.getEmail());
